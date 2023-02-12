@@ -17,7 +17,12 @@ on:
         type: choice
         options:
           - all
+<<<<<<< HEAD
           - s905x3_s905d_s912
+=======
+          - s922x_s905x3_s905d_s912_s905l3a
+          - rock5b_r66s_r68s_beikeyun_l1pro
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
           - a311d
           - s922x
           - s922x-n2
@@ -28,16 +33,34 @@ on:
           - s905x2-km3
           - s912
           - s912-m8s
+<<<<<<< HEAD
           - s912-t95z-plus
           - s905d
           - s905d-ki
           - s905x
           - s905x-t95
+=======
+          - s905d
+          - s905d-ki
+          - s905x
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
           - s905w
           - s905
           - s905l3a
           - s905l2
           - s905lb-r3300l
+<<<<<<< HEAD
+=======
+          - rock5b
+          - h88k
+          - r66s
+          - r68s
+          - h66k
+          - h68k
+          - eaidk-610
+          - beikeyun
+          - l1pro
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
       openwrt_kernel:
         description: "Select kernel version"
         required: false
@@ -69,10 +92,17 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
+<<<<<<< HEAD
   FEEDS_CONF: router-config/openwrt-master/feeds.conf.default
   CONFIG_FILE: router-config/openwrt-master/config
   DIY_P1_SH: router-config/openwrt-master/diy-part1.sh
   DIY_P2_SH: router-config/openwrt-master/diy-part2.sh
+=======
+  FEEDS_CONF: config-openwrt/openwrt-master/feeds.conf.default
+  CONFIG_FILE: config-openwrt/openwrt-master/config
+  DIY_P1_SH: config-openwrt/openwrt-master/diy-part1.sh
+  DIY_P2_SH: config-openwrt/openwrt-master/diy-part2.sh
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
   TZ: America/New_York
 
 jobs:
@@ -146,7 +176,11 @@ jobs:
           cd openwrt/
           echo -e "$(nproc) thread compile"
           make -j$(($(nproc) + 1)) V=s || make -j1 || make -j1 V=s
+<<<<<<< HEAD
           echo "build_tag=OpenWrt_Aml_official_$(date +"%m.%d.%H%M")" >> ${GITHUB_OUTPUT}
+=======
+          echo "build_tag=OpenWrt_official_$(date +"%m.%d.%H%M")" >> ${GITHUB_OUTPUT}
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
           echo "status=success" >> ${GITHUB_OUTPUT}
 
       - name: Upload OpenWrt Firmware to Release
@@ -186,7 +220,11 @@ jobs:
           allowUpdates: true
           token: ${{ secrets.GH_TOKEN }}
           body: |
+<<<<<<< HEAD
             This is OpenWrt firmware for Amlogic s9xxx tv box
+=======
+            This is OpenWrt firmware for Amlogic and Rockchip
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
             * Firmware information
             Default IP: 192.168.1.1
             Default username: root

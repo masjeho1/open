@@ -129,7 +129,11 @@ jobs:
           allowUpdates: true
           token: ${{ secrets.GH_TOKEN }}
           body: |
+<<<<<<< HEAD
             This is OpenWrt firmware for Armvirt 64
+=======
+            This is OpenWrt firmware for Amlogic and Rockchip
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
             * Firmware information
             Default IP: 192.168.1.1
             Default username: root

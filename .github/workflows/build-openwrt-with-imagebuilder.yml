@@ -24,11 +24,20 @@ on:
       openwrt_board:
         description: "Select Amlogic board"
         required: false
+<<<<<<< HEAD
         default: "s905x3_s905d_s912"
         type: choice
         options:
           - all
           - s905x3_s905d_s912
+=======
+        default: "all"
+        type: choice
+        options:
+          - all
+          - s922x_s905x3_s905d_s912_s905l3a
+          - rock5b_r66s_r68s_beikeyun_l1pro
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
           - a311d
           - s922x
           - s922x-n2
@@ -39,16 +48,34 @@ on:
           - s905x2-km3
           - s912
           - s912-m8s
+<<<<<<< HEAD
           - s912-t95z-plus
           - s905d
           - s905d-ki
           - s905x
           - s905x-t95
+=======
+          - s905d
+          - s905d-ki
+          - s905x
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
           - s905w
           - s905
           - s905l3a
           - s905l2
           - s905lb-r3300l
+<<<<<<< HEAD
+=======
+          - rock5b
+          - h88k
+          - r66s
+          - r68s
+          - h66k
+          - h68k
+          - eaidk-610
+          - beikeyun
+          - l1pro
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
       openwrt_kernel:
         description: "Select kernel version"
         required: false
@@ -56,7 +83,10 @@ on:
         type: choice
         options:
           - 5.9.16
+<<<<<<< HEAD
           - 5.9.166
+=======
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
           - 5.4.225_5.10.160_5.15.85
           - 5.4.225_5.10.160
           - 5.10.160_5.15.85
@@ -73,7 +103,11 @@ on:
       kernel_repo:
         description: "Set the kernel repository"
         required: false
+<<<<<<< HEAD
+        default: "https://github.com/ophub/kernel/tree/main/pub"
+=======
         default: "https://github.com/masjeho1/kernelll/tree/main/pub"
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
       openwrt_size:
         description: "Set the rootfs size(Unit: MiB)"
         required: false
@@ -81,7 +115,11 @@ on:
 
 env:
   TZ: America/New_York
+<<<<<<< HEAD
   IMAGEBUILDER_SH: router-config/openwrt-imagebuilder/imagebuilder.sh
+=======
+  IMAGEBUILDER_SH: config-openwrt/openwrt-imagebuilder/imagebuilder.sh
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
 
 jobs:
   build:
@@ -127,7 +165,11 @@ jobs:
 
       - name: Build OpenWrt firmware
         if: ${{ steps.imagebuilder.outputs.status }} == 'success' && !cancelled()
+<<<<<<< HEAD
+        uses: ophub/amlogic-s9xxx-openwrt@main
+=======
         uses: masjeho1/open@main
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
         with:
           openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
           openwrt_board: ${{ inputs.openwrt_board }}
@@ -141,12 +183,20 @@ jobs:
         uses: ncipollo/release-action@main
         if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
         with:
+<<<<<<< HEAD
           tag: OpenWrt_Aml_imagebuilder_${{ env.RELEASES_BRANCH }}_${{ env.PACKAGED_OUTPUTDATE }}
+=======
+          tag: OpenWrt_imagebuilder_${{ env.RELEASES_BRANCH }}_${{ env.PACKAGED_OUTPUTDATE }}
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
           artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
           allowUpdates: true
           token: ${{ secrets.GH_TOKEN }}
           body: |
+<<<<<<< HEAD
             This is OpenWrt firmware for Amlogic s9xxx tv box
+=======
+            This is OpenWrt firmware for Amlogic and Rockchip
+>>>>>>> e733e319a9cf58352d69b951683416d71cb63882
             * Firmware information
             Default IP: 192.168.1.1
             Default username: root
